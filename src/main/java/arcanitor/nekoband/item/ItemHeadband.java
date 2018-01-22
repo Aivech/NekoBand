@@ -28,7 +28,7 @@ public class ItemHeadband extends ItemArmor implements ISpecialArmor {
         this.name = name;
         setCreativeTab(ModItems.NEKOTAB);
         setRegistryName(new ResourceLocation(NekoBand.MODID,name));
-        setUnlocalizedName(name);
+        setUnlocalizedName(NekoBand.MODID+":"+name);
     }
 
     public ItemHeadband(String name) {
