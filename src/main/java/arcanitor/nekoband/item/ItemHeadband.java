@@ -3,6 +3,7 @@ package arcanitor.nekoband.item;
 import arcanitor.nekoband.NekoBand;
 import arcanitor.nekoband.client.model.ModelHeadband;
 import net.minecraft.client.model.ModelBiped;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,12 +13,14 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.ISpecialArmor;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Resource;
 
 public class ItemHeadband extends ItemArmor implements ISpecialArmor {
     private boolean isUnbreakable = false;
@@ -66,6 +69,11 @@ public class ItemHeadband extends ItemArmor implements ISpecialArmor {
     @Override
     public ModelBiped getArmorModel(EntityLivingBase e, ItemStack stack, EntityEquipmentSlot slot, ModelBiped model) {
         return new ModelHeadband();
+    }
+
+    @SideOnly(Side.CLIENT)
+    public void initItemModel() {
+        ModelLoader.setCustomModelResourceLocation(this,0,new ModelResourceLocation(getRegistryName(),"inventory"));
     }
 
     public static final ArmorMaterial MATERIAL_HEADBAND = EnumHelper.addArmorMaterial( //default material
