@@ -1,6 +1,6 @@
 package arcanitor.nekoband.proxy;
 
-import arcanitor.nekoband.item.ItemHairband;
+import arcanitor.nekoband.item.ItemHeadband;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -13,7 +13,7 @@ public class CommonProxy {
 
     @SubscribeEvent
     public static void initItems(RegistryEvent.Register<Item> e) {
-        e.getRegistry().register(new ItemHairband("hairband"));
+        e.getRegistry().register(new ItemHeadband("headband"));
     }
 
 }

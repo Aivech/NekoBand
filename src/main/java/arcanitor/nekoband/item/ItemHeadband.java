@@ -18,21 +18,21 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
-public class ItemHairband extends ItemArmor implements ISpecialArmor {
+public class ItemHeadband extends ItemArmor implements ISpecialArmor {
     private boolean isUnbreakable = false;
+    private final String name;
 
-    public ItemHairband(String name,ArmorMaterial mat) {
+    public ItemHeadband(String name, ArmorMaterial mat) {
         super(mat,0,EntityEquipmentSlot.HEAD);
+        this.name = name;
         setCreativeTab(ModItems.NEKOTAB);
         setRegistryName(new ResourceLocation(NekoBand.MODID,name));
         setUnlocalizedName(name);
-        NekoBand.logger.info(this.getRegistryName().toString());
     }
 
-    public ItemHairband(String name) {
-        this(name,MATERIAL_HAIRBAND);
+    public ItemHeadband(String name) {
+        this(name, MATERIAL_HEADBAND);
     }
 
     public void setUnbreakable(boolean bool) {
@@ -59,7 +59,7 @@ public class ItemHairband extends ItemArmor implements ISpecialArmor {
 
     @Override
     public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-        return NekoBand.MODID+":textures/model/"+stack.getItem().getRegistryName().toString();
+        return NekoBand.MODID+":textures/model/"+this.name+".png";
     }
 
     @SideOnly(Side.CLIENT)
@@ -68,8 +68,8 @@ public class ItemHairband extends ItemArmor implements ISpecialArmor {
         return new ModelHeadband();
     }
 
-    public static final ArmorMaterial MATERIAL_HAIRBAND = EnumHelper.addArmorMaterial( //default material
-            "HAIRBAND_DEFAULT",
+    public static final ArmorMaterial MATERIAL_HEADBAND = EnumHelper.addArmorMaterial( //default material
+            "HEADBAND_DEFAULT",
             "hairband_default",
             50,
             new int[]{3, 3, 3, 3},

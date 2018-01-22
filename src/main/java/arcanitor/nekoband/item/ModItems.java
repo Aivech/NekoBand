@@ -7,14 +7,14 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class ModItems {
 
 
-    @GameRegistry.ObjectHolder("nekoband:hairband")
-    public static ItemHairband itemHairband;
+    @GameRegistry.ObjectHolder("nekoband:headband")
+    public static ItemHeadband itemHeadband;
 
 
     public static final CreativeTabs NEKOTAB = new CreativeTabs("NEKOTAB") {
         @Override
         public ItemStack getTabIconItem() {
-            return new ItemStack(itemHairband);
+            return new ItemStack(itemHeadband);
         }
     };
 }

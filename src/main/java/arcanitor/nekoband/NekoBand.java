@@ -25,6 +25,4 @@ public class NekoBand {
         logger = e.getModLog();
         proxy.preInit(e);
     }
-
-
 }
