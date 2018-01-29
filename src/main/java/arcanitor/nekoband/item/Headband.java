@@ -21,6 +21,7 @@ public class Headband extends Item implements ISpecialArmor, IItemColor {
         setRegistryName(name);
         setUnlocalizedName(name);
         setCreativeTab(ModItems.NEKOTAB);
+        setMaxStackSize(1);
 
         setMaxDamage(durability);
         this.armorMat = armorMat;

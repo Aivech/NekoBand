@@ -1,27 +1,16 @@
-package arcanitor.nekoband.item.special;
+package arcanitor.nekoband.item.elemental;
 
 import arcanitor.nekoband.item.Headband;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.init.SoundEvents;
-import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
-import net.minecraftforge.common.util.EnumHelper;
 
 import javax.annotation.Nonnull;
 
-public class HeadbandIce extends Headband {
-    public static ItemArmor.ArmorMaterial mat = EnumHelper.addArmorMaterial(
-            "ICEBAND",
-            "headband_ice",
-            1000,
-            new int[]{3,0,0,0},
-            12,
-            SoundEvents.ENTITY_CAT_PURR,
-            2
-    );
+public class HeadbandIce extends Headband implements IElementalArmor {
+
     public HeadbandIce() {
-        super("ice_neko",0,mat);
+        super("headband_ice",0,ELEMENTAL);
     }
 
     @Override
@@ -29,9 +18,14 @@ public class HeadbandIce extends Headband {
         ArmorProperties prop = Headband.ARMOR_DEFAULT;
         if (source == DamageSource.DROWN) {
             prop.AbsorbRatio = 1;
-        } else if (!source.isFireDamage()) {
+        } else if (!source.isFireDamage()||(source == PIERCING_FIRE)) {
             prop.AbsorbRatio = .1;
         }
         return prop;
+    }
+
+    @Override
+    public void doElementalAttack(EntityLivingBase target) {
+        target.damageEntity(PIERCING_COLD,4.0f);
     }
 }
