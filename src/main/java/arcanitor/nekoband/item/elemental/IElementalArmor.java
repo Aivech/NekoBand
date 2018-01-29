@@ -23,6 +23,7 @@ public interface IElementalArmor {
     DamageSource PIERCING_FIRE = new DamageSource("piercing_fire").setDamageBypassesArmor().setDamageIsAbsolute();
     DamageSource PIERCING_COLD = new DamageSource("piercing_cold").setDamageBypassesArmor().setDamageIsAbsolute();
     DamageSource PIERCING_EARTH = new DamageSource("piercing_earth").setDamageBypassesArmor().setDamageIsAbsolute();
+    DamageSource PIERCING_LIGHTNING = new DamageSource("piercing_lighting").setDamageBypassesArmor().setDamageIsAbsolute();
 
 
 
