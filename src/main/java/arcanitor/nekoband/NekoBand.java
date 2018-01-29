@@ -12,6 +12,8 @@ public class NekoBand {
     public static final String NAME = "NekoBand";
     public static final String VERSION = "0.0.1";
 
+
+
     @Mod.Instance
     public static NekoBand instance;
 
