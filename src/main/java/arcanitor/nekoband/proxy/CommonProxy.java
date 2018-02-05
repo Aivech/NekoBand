@@ -22,12 +22,6 @@ public class CommonProxy {
     }
 
     @SubscribeEvent
-    public static void initItems(RegistryEvent.Register<Item> e) {
-        e.getRegistry().register(new ItemHeadband("headband"));
-        e.getRegistry().register(new HeadbandIce());
-    }
-
-    @SubscribeEvent
     public static void modifyAttacks(AttackEntityEvent e) {
         Entity t = e.getTarget();
         if (t instanceof EntityLivingBase) {

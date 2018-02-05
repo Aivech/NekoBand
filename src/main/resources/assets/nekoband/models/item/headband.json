@@ -2,9 +2,9 @@
   "parent": "item/generated",
   "textures": {
     "layer0": "nekoband:item/headband",
-    "band":"nekoband:item/headband_dyeable",
-    "ear_outer":"nekoband:cat_ears_dyeable",
-    "ear_inner":"nekoband:cat_ears_dyeable"
+    "band":"nekoband:item/headband/headband_dyeable",
+    "ear_outer":"nekoband:item/ears/cat_ears_dyeable",
+    "ear_inner":"nekoband:item/ears/cat_ears_dyeable"
   },
   "elements": [
     {
