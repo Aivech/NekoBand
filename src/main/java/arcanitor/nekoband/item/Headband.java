@@ -1,6 +1,7 @@
 package arcanitor.nekoband.item;
 
 import arcanitor.nekoband.NekoBand;
+import javafx.scene.control.Tab;
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -22,11 +23,12 @@ public class Headband extends Item implements ISpecialArmor, IItemColor {
     public Headband(String name, int durability, ArmorMaterial armorMat) {
         setRegistryName(new ResourceLocation(NekoBand.MODID,name));
         setUnlocalizedName(NekoBand.MODID+":"+name);
-        setCreativeTab(ModItems.NEKOTAB);
         setMaxStackSize(1);
-
         setMaxDamage(durability);
         this.armorMat = armorMat;
+
+        //MUST be done last
+        ModItems.NEKOTAB.addToTab(new ItemStack(this));
     }
 
     @Override

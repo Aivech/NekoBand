@@ -8,6 +8,7 @@ import arcanitor.nekoband.item.elemental.HeadbandLightning;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -18,12 +19,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 @Mod.EventBusSubscriber
 public class ModItems {
-    public static final CreativeTabs NEKOTAB = new CreativeTabs("NEKOTAB") {
-        @Override
-        public ItemStack getTabIconItem() {
-            return new ItemStack(itemHeadband);
-        }
-    };
+    public static final TabNekoband NEKOTAB = new TabNekoband("NEKOTAB");
 
     public static ItemHeadband itemHeadband = new ItemHeadband("headband");
 
@@ -34,12 +30,7 @@ public class ModItems {
 
     @SubscribeEvent
     public static void initItems(RegistryEvent.Register<Item> e) {
-        e.getRegistry().register(itemHeadband);
-
-        e.getRegistry().register(headbandEarth);
-        e.getRegistry().register(headbandLightning);
-        e.getRegistry().register(headbandFire);
-        e.getRegistry().register(headbandIce);
+        e.getRegistry().registerAll(itemHeadband,headbandEarth,headbandLightning,headbandFire,headbandIce);
     }
 
     @SideOnly(Side.CLIENT)
