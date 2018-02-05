@@ -2,6 +2,7 @@ package arcanitor.nekoband.item;
 
 import arcanitor.nekoband.NekoBand;
 import javafx.scene.control.Tab;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,7 +13,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.ISpecialArmor;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
 
@@ -84,5 +88,10 @@ public class Headband extends Item implements ISpecialArmor, IItemColor {
             stack.setTagCompound(tag);
         }
         return tag;
+    }
+
+    @SideOnly(Side.CLIENT)
+    public void initItemModel() {
+        ModelLoader.setCustomModelResourceLocation(this,0,new ModelResourceLocation("nekoband:models/item/headband","inventory"));
     }
 }

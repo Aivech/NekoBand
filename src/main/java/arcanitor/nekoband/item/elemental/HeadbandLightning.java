@@ -33,8 +33,5 @@ public class HeadbandLightning extends Headband implements IElementalArmor {
         target.attackEntityFrom(PIERCING_LIGHTNING,4.0f*player.getCooledAttackStrength(0.5f));
     }
 
-    @SideOnly(Side.CLIENT)
-    public void initItemModel() {
-        ModelLoader.setCustomModelResourceLocation(this,0,new ModelResourceLocation("nekoband:models/item/headband","inventory"));
-    }
+
 }
