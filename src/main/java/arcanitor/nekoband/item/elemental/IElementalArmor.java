@@ -4,6 +4,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.util.DamageSource;
+import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.EnumHelper;
 
 public interface IElementalArmor {
@@ -24,8 +25,5 @@ public interface IElementalArmor {
     DamageSource PIERCING_COLD = new DamageSource("piercing_cold").setDamageBypassesArmor().setDamageIsAbsolute();
     DamageSource PIERCING_EARTH = new DamageSource("piercing_earth").setDamageBypassesArmor().setDamageIsAbsolute();
     DamageSource PIERCING_LIGHTNING = new DamageSource("piercing_lighting").setDamageBypassesArmor().setDamageIsAbsolute();
-
-
-
 
 }
