@@ -8,7 +8,7 @@ import net.minecraft.util.NonNullList;
 import javax.annotation.Nonnull;
 
 public class TabNekoband extends CreativeTabs {
-    private NonNullList<ItemStack> displayItems;
+    private NonNullList<ItemStack> displayItems = NonNullList.create();
 
     public TabNekoband(String label) {
         super(label);

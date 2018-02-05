@@ -21,16 +21,22 @@ import net.minecraftforge.registries.IForgeRegistry;
 public class ModItems {
     public static final TabNekoband NEKOTAB = new TabNekoband("NEKOTAB");
 
-    public static ItemHeadband itemHeadband = new ItemHeadband("headband");
+    public static ItemHeadband itemHeadband;
 
-    public static HeadbandEarth headbandEarth = new HeadbandEarth();
-    public static HeadbandLightning headbandLightning = new HeadbandLightning();
-    public static HeadbandFire headbandFire = new HeadbandFire();
-    public static HeadbandIce headbandIce = new HeadbandIce();
+    public static HeadbandEarth headbandEarth;
+    public static HeadbandLightning headbandLightning;
+    public static HeadbandFire headbandFire;
+    public static HeadbandIce headbandIce;
 
     @SubscribeEvent
     public static void initItems(RegistryEvent.Register<Item> e) {
-        e.getRegistry().registerAll(itemHeadband,headbandEarth,headbandLightning,headbandFire,headbandIce);
+        e.getRegistry().registerAll(
+                itemHeadband = new ItemHeadband("headband"),
+                headbandEarth = new HeadbandEarth(),
+                headbandLightning = new HeadbandLightning(),
+                headbandFire = new HeadbandFire(),
+                headbandIce = new HeadbandIce()
+        );
     }
 
     @SideOnly(Side.CLIENT)
