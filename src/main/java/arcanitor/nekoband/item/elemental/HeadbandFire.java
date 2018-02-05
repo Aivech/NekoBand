@@ -2,6 +2,7 @@ package arcanitor.nekoband.item.elemental;
 
 import arcanitor.nekoband.item.Headband;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 
@@ -24,7 +25,8 @@ public class HeadbandFire extends Headband implements IElementalArmor {
     }
 
     @Override
-    public void doElementalAttack(EntityLivingBase target) {
-        target.damageEntity(PIERCING_FIRE,4.0f);
+    public void doElementalAttack(EntityLivingBase target, EntityPlayer player) {
+
+        target.attackEntityFrom(PIERCING_FIRE,4.0f*player.getCooledAttackStrength(0.5f));
     }
 }

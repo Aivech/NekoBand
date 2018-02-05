@@ -22,6 +22,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import javax.annotation.Nonnull;
 import javax.annotation.Resource;
 
+//OLD CLASS
+@Deprecated
 public class ItemHeadband extends ItemArmor implements ISpecialArmor {
     private boolean isUnbreakable = false;
     private final String name;

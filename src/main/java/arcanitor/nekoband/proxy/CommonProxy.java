@@ -29,14 +29,18 @@ public class CommonProxy {
 
     @SubscribeEvent
     public static void modifyAttacks(AttackEntityEvent e) {
-        Entity target = e.getTarget();
-        if (target instanceof EntityLivingBase) {
+        Entity t = e.getTarget();
+        if (t instanceof EntityLivingBase) {
             Item head = e.getEntityPlayer().getItemStackFromSlot(EntityEquipmentSlot.HEAD).getItem();
             //todo: other armor pieces maybe
 
             if (head instanceof IElementalArmor) {
                 NekoBand.logger.info("Valid armor found.");
-                ((IElementalArmor) head).doElementalAttack((EntityLivingBase)e.getTarget());
+
+                EntityLivingBase target = (EntityLivingBase)t;
+                target.hurtResistantTime = 0;
+
+                ((IElementalArmor) head).doElementalAttack(target, e.getEntityPlayer());
             }
 
         }

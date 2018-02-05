@@ -1,15 +1,15 @@
 package arcanitor.nekoband.item.elemental;
 
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.util.DamageSource;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.EnumHelper;
 
 public interface IElementalArmor {
 
-    void doElementalAttack(EntityLivingBase target);
+    void doElementalAttack(EntityLivingBase target, EntityPlayer player);
 
     ItemArmor.ArmorMaterial ELEMENTAL = EnumHelper.addArmorMaterial(
             "elemental",

@@ -1,6 +1,302 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "nekoband:item/headband"
+    "layer0": "nekoband:item/headband",
+    "band":"nekoband:item/headband_dyeable",
+    "ear_outer":"nekoband:cat_ears_dyeable",
+    "ear_inner":"nekoband:cat_ears_dyeable"
+  },
+  "elements": [
+    {
+      "from": [3,1,7],
+      "to": [13,9,9],
+      "faces": {
+        "up": {
+          "uv": [0,0,10,2],
+          "texture": "#band",
+          "tintindex": 3
+        },
+        "down": {
+          "uv": [0,12,10,14],
+          "texture": "#band",
+          "tintindex": 3
+        },
+        "west": {
+          "uv": [11,3,13,11],
+          "texture": "#band",
+          "tintindex": 3
+        },
+        "east": {
+          "uv": [11,3,13,11],
+          "texture": "#band",
+          "tintindex": 3
+        },
+        "north": {
+          "uv": [0,3,10,11],
+          "texture": "#band",
+          "tintindex": 3
+        },
+        "south": {
+          "uv": [0,3,10,11],
+          "texture": "#band",
+          "tintindex": 3
+        }
+      }
+    },
+    {
+      "from": [2,8,7],
+      "to": [5,10,8],
+      "faces": {
+        "up": {
+          "uv": [1,0,4,1],
+          "texture": "#ear_outer",
+          "tintindex": 1
+        },
+        "down": {
+          "uv": [4,0,7,1],
+          "texture": "#ear_outer",
+          "tintindex": 1
+        },
+        "west": {
+          "uv": [0,1,1,3],
+          "texture": "#ear_outer",
+          "tintindex": 1
+        },
+        "east": {
+          "uv": [4,1,5,3],
+          "texture": "#ear_outer",
+          "tintindex": 1
+        },
+        "north": {
+          "uv": [5,1,8,3],
+          "texture": "#ear_outer",
+          "tintindex": 1
+        },
+        "south": {
+          "uv": [1,1,4,3],
+          "texture": "#ear_inner",
+          "tintindex": 2
+        }
+      }
+    },
+    {
+      "from": [3,10,7],
+      "to": [4,11,8],
+      "faces": {
+        "up": {
+          "uv": [1,4,2,5],
+          "texture": "#ear_outer",
+          "tintindex": 1
+        },
+        "west": {
+          "uv": [0,5,1,6],
+          "texture": "#ear_outer",
+          "tintindex": 1
+        },
+        "east": {
+          "uv": [2,5,3,6],
+          "texture": "#ear_outer",
+          "tintindex": 1
+        },
+        "north": {
+          "uv": [3,5,4,6],
+          "texture": "#ear_outer",
+          "tintindex": 1
+        },
+        "south": {
+          "uv": [1,5,2,6],
+          "texture": "#ear_inner",
+          "tintindex": 2
+        }
+      }
+    },
+    {
+      "from": [3,11,8],
+      "to": [4,12,9],
+      "faces": {
+        "north": {
+          "texture": "missingtexture"
+        }
+      }
+    },
+    {
+      "from": [4,10,8],
+      "to": [5,11,9],
+      "faces": {
+        "north": {
+          "texture": "missingtexture"
+        }
+      }
+    },
+    {
+      "from": [5,9,8],
+      "to": [6,10,9],
+      "faces": {
+        "north": {
+          "texture": "missingtexture"
+        }
+      }
+    },
+    {
+      "from": [2,10,8],
+      "to": [3,11,9],
+      "faces": {
+        "north": {
+          "texture": "missingtexture"
+        }
+      }
+    },
+    {
+      "from": [1,8,8],
+      "to": [2,10,9],
+      "faces": {
+        "north": {
+          "texture": "missingtexture"
+        }
+      }
+    },
+    {
+      "from": [2,7,9],
+      "to": [3,8,9],
+      "faces": {
+        "north": {
+          "texture": "missingtexture"
+        }
+      }
+    },
+    {
+      "from": [11,10,8],
+      "to": [12,11,9],
+      "faces": {
+        "north": {
+          "texture": "missingtexture"
+        }
+      }
+    },
+    {
+      "from": [12,11,8],
+      "to": [13,12,9],
+      "faces": {
+        "west": {
+          "texture": "missingtexture"
+        },
+        "north": {
+          "texture": "missingtexture"
+        }
+      }
+    },
+    {
+      "from": [13,10,8],
+      "to": [14,11,9],
+      "faces": {
+        "north": {
+          "texture": "missingtexture"
+        }
+      }
+    },
+    {
+      "from": [12,10,7],
+      "to": [13,11,8],
+      "faces": {
+        "up": {
+          "uv": [1,4,2,5],
+          "texture": "#ear_outer",
+          "tintindex": 1
+        },
+        "west": {
+          "uv": [2,5,3,6],
+          "texture": "#ear_outer",
+          "tintindex": 1
+        },
+        "east": {
+          "uv": [0,5,1,6],
+          "texture": "#ear_outer",
+          "tintindex": 1
+        },
+        "north": {
+          "uv": [3,5,4,6],
+          "texture": "#ear_outer",
+          "tintindex": 1
+        },
+        "south": {
+          "uv": [1,5,2,6],
+          "texture": "#ear_inner",
+          "tintindex": 2
+        }
+      }
+    },
+    {
+      "from": [11,8,7],
+      "to": [14,10,8],
+      "faces": {
+        "up": {
+          "uv": [1,0,4,1],
+          "texture": "#ear_outer",
+          "tintindex": 1
+        },
+        "down": {
+          "uv": [7,0,4,1],
+          "texture": "#ear_outer",
+          "tintindex": 1
+        },
+        "west": {
+          "uv": [4,1,5,3],
+          "texture": "#ear_outer",
+          "tintindex": 1
+        },
+        "east": {
+          "uv": [0,1,1,3],
+          "texture": "#ear_outer",
+          "tintindex": 1
+        },
+        "north": {
+          "uv": [8,1,5,3],
+          "texture": "#ear_outer",
+          "tintindex": 1
+        },
+        "south": {
+          "uv": [4,1,1,3],
+          "texture": "#ear_inner",
+          "tintindex": 2
+        }
+      }
+    },
+    {
+      "from": [14,8,8],
+      "to": [15,10,9],
+      "faces": {
+        "north": {
+          "texture": "missingtexture"
+        },
+        "south": {
+          "texture": "missingtexture"
+        }
+      }
+    },
+    {
+      "from": [13,7,8],
+      "to": [14,8,9],
+      "faces": {
+        "north": {
+          "texture": "missingtexture"
+        }
+      }
+    },
+    {
+      "from": [10,9,8],
+      "to": [11,10,9],
+      "faces": {
+        "north": {
+          "texture": "missingtexture"
+        }
+      }
+    }
+  ],
+  "display": {
+    "ground": {
+      "rotation": [ 0, 0, 0],
+      "translation": [ 0, 0, 0],
+      "scale": [ 0, 0, 0]
+    }
   }
 }
