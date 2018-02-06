@@ -92,18 +92,18 @@ public class Headband extends Item implements ISpecialArmor, IItemColor {
     }
 
     @Override
-    public int colorMultiplier(ItemStack stack, int tintIndex) {
+    public int colorMultiplier(@Nonnull ItemStack stack, int tintIndex) {
         NBTTagCompound tag = safeReadNBT(stack);
 
         switch (tintIndex) {
-            case 1: return tag.getInteger("nekoband_color_primary");
-            case 2: return tag.getInteger("nekoband_color_secondary");
-            case 3: return tag.getInteger("nekoband_color_headband");
+            case 1: return tag.getInteger("color_primary");
+            case 2: return tag.getInteger("color_secondary");
+            case 3: return tag.getInteger("color_headband");
         }
         return 0;
     }
 
-    private static NBTTagCompound safeReadNBT(ItemStack stack) {
+    private static NBTTagCompound safeReadNBT(@Nonnull ItemStack stack) {
         NBTTagCompound tag = stack.getTagCompound();
         if(tag == null) {
             tag = new NBTTagCompound();

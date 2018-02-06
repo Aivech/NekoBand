@@ -32,6 +32,9 @@ public class ModelHeadbandDynamic implements IModel {
         //base textures - magic
         for (HeadbandBase base : Headband.bases.values()) builder.add(base.getTexture());
 
+        //dyeable base
+        builder.add(new ResourceLocation(NekoBand.MODID,"item/band/dyeable"));
+
         //ear textures - more magic
         builder.addAll(Headband.getEarTextures());
 

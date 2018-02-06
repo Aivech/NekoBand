@@ -2,6 +2,8 @@ package arcanitor.nekoband.common.item;
 
 import arcanitor.nekoband.api.HeadbandBase;
 import arcanitor.nekoband.common.NekoBand;
+import arcanitor.nekoband.common.item.ear.ItemEarInner;
+import arcanitor.nekoband.common.item.ear.ItemEarOuter;
 import arcanitor.nekoband.common.item.elemental.HeadbandEarth;
 import arcanitor.nekoband.common.item.elemental.HeadbandFire;
 import arcanitor.nekoband.common.item.elemental.HeadbandIce;
@@ -33,6 +35,9 @@ public class ModItems {
     public static HeadbandLightning headbandLightning;
     public static HeadbandFire headbandFire;
     public static HeadbandIce headbandIce;
+
+    public static ItemEarInner earInnerDyeable;
+    public static ItemEarOuter earOuterDyeable;
 
     @SubscribeEvent
     public static void initItems(RegistryEvent.Register<Item> e) {
