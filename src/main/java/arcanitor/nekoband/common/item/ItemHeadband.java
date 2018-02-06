@@ -1,6 +1,6 @@
-package arcanitor.nekoband.item;
+package arcanitor.nekoband.common.item;
 
-import arcanitor.nekoband.NekoBand;
+import arcanitor.nekoband.common.NekoBand;
 import arcanitor.nekoband.client.model.ModelHeadband;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -20,7 +20,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Resource;
 
 //OLD CLASS
 @Deprecated

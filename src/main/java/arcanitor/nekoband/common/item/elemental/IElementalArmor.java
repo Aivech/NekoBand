@@ -1,4 +1,4 @@
-package arcanitor.nekoband.item.elemental;
+package arcanitor.nekoband.common.item.elemental;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;

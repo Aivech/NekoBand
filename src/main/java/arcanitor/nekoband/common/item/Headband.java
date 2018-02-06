@@ -1,7 +1,8 @@
-package arcanitor.nekoband.item;
+package arcanitor.nekoband.common.item;
 
-import arcanitor.nekoband.NekoBand;
-import javafx.scene.control.Tab;
+import arcanitor.nekoband.api.HeadbandBase;
+import arcanitor.nekoband.common.NekoBand;
+import com.google.common.collect.ImmutableSet;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.entity.EntityLivingBase;
@@ -19,10 +20,16 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Headband extends Item implements ISpecialArmor, IItemColor {
+    public static HashMap<String,HeadbandBase> bases = new HashMap<>();
+    private static Set<ResourceLocation> ears = new HashSet<>();
+
     private ArmorMaterial armorMat;
-    protected static final ArmorProperties ARMOR_DEFAULT = new ArmorProperties(0,0,Integer.MAX_VALUE);
+    protected ArmorProperties armorProp = new ArmorProperties(0,0,Integer.MAX_VALUE);
 
     public Headband(String name, int durability, ArmorMaterial armorMat) {
         setRegistryName(new ResourceLocation(NekoBand.MODID,name));
@@ -33,6 +40,19 @@ public class Headband extends Item implements ISpecialArmor, IItemColor {
 
         //MUST be done last
         ModItems.NEKOTAB.addToTab(new ItemStack(this));
+    }
+
+    public static void addValidBase(HeadbandBase base) {
+        NekoBand.logger.info("Added "+base.getItem().getUnlocalizedName()+" as valid base.");
+        bases.put(base.getItem().getUnlocalizedName(),base);
+    }
+
+    public static void addEarTexture(ResourceLocation tex) {
+        ears.add(tex);
+    }
+
+    public static ImmutableSet<ResourceLocation> getEarTextures() {
+        return ImmutableSet.copyOf(ears);
     }
 
     @Override
@@ -55,8 +75,10 @@ public class Headband extends Item implements ISpecialArmor, IItemColor {
 
     @Override
     public ArmorProperties getProperties(EntityLivingBase player, @Nonnull ItemStack armor, DamageSource source, double damage, int slot) {
-        return ARMOR_DEFAULT;
+        return armorProp;
     }
+
+    public void setProperties(ArmorProperties prop) { this.armorProp = prop; }
 
     @Override
     public int getArmorDisplay(EntityPlayer player, @Nonnull ItemStack armor, int slot) {

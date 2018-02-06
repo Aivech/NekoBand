@@ -1,6 +1,6 @@
 package arcanitor.nekoband.proxy;
 
-import arcanitor.nekoband.item.ModItems;
+import arcanitor.nekoband.common.item.ModItems;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;

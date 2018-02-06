@@ -1,4 +1,4 @@
-package arcanitor.nekoband.item;
+package arcanitor.nekoband.common.item;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;

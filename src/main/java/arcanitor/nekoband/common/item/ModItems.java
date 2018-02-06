@@ -1,9 +1,9 @@
-package arcanitor.nekoband.item;
+package arcanitor.nekoband.common.item;
 
-import arcanitor.nekoband.item.elemental.HeadbandEarth;
-import arcanitor.nekoband.item.elemental.HeadbandFire;
-import arcanitor.nekoband.item.elemental.HeadbandIce;
-import arcanitor.nekoband.item.elemental.HeadbandLightning;
+import arcanitor.nekoband.common.item.elemental.HeadbandEarth;
+import arcanitor.nekoband.common.item.elemental.HeadbandFire;
+import arcanitor.nekoband.common.item.elemental.HeadbandIce;
+import arcanitor.nekoband.common.item.elemental.HeadbandLightning;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;

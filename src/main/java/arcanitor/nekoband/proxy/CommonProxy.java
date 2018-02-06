@@ -1,14 +1,11 @@
 package arcanitor.nekoband.proxy;
 
-import arcanitor.nekoband.NekoBand;
-import arcanitor.nekoband.item.ItemHeadband;
-import arcanitor.nekoband.item.elemental.HeadbandIce;
-import arcanitor.nekoband.item.elemental.IElementalArmor;
+import arcanitor.nekoband.common.NekoBand;
+import arcanitor.nekoband.common.item.elemental.IElementalArmor;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;

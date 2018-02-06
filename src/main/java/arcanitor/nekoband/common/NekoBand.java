@@ -1,4 +1,4 @@
-package arcanitor.nekoband;
+package arcanitor.nekoband.common;
 
 import arcanitor.nekoband.proxy.CommonProxy;
 import net.minecraftforge.fml.common.Mod;
