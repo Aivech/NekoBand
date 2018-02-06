@@ -2,6 +2,7 @@ package arcanitor.nekoband.common.item;
 
 import arcanitor.nekoband.api.HeadbandBase;
 import arcanitor.nekoband.common.NekoBand;
+import arcanitor.nekoband.util.NBTUtil;
 import com.google.common.collect.ImmutableSet;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.color.IItemColor;
@@ -16,6 +17,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.ISpecialArmor;
+import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -24,6 +26,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
+import static arcanitor.nekoband.util.NBTUtil.safeReadNBT;
+
 public class Headband extends Item implements ISpecialArmor, IItemColor {
     public static HashMap<String,HeadbandBase> bases = new HashMap<>();
     private static Set<ResourceLocation> ears = new HashSet<>();
@@ -31,20 +35,20 @@ public class Headband extends Item implements ISpecialArmor, IItemColor {
     private ArmorMaterial armorMat;
     protected ArmorProperties armorProp = new ArmorProperties(0,0,Integer.MAX_VALUE);
 
-    public Headband(String name, int durability, ArmorMaterial armorMat) {
+    public Headband(String name, int durability/*, ArmorMaterial armorMat*/) {
         setRegistryName(new ResourceLocation(NekoBand.MODID,name));
         setUnlocalizedName(NekoBand.MODID+":"+name);
         setMaxStackSize(1);
         setMaxDamage(durability);
-        this.armorMat = armorMat;
+        //this.armorMat = armorMat;
 
         //MUST be done last
         ModItems.NEKOTAB.addToTab(new ItemStack(this));
     }
 
     public static void addValidBase(HeadbandBase base) {
-        NekoBand.logger.info("Added "+base.getItem().getUnlocalizedName()+" as valid base.");
-        bases.put(base.getItem().getUnlocalizedName(),base);
+        NekoBand.logger.info("Added "+base.getItemStack().getUnlocalizedName()+" as valid base.");
+        bases.put(base.getItemStack().getUnlocalizedName(),base);
     }
 
     public static void addEarTexture(ResourceLocation tex) {
@@ -56,14 +60,34 @@ public class Headband extends Item implements ISpecialArmor, IItemColor {
     }
 
     @Override
-    public boolean isEnchantable(ItemStack stack) { return true; }
+    public boolean isEnchantable(ItemStack stack) {
+        NBTTagCompound nbt = safeReadNBT(stack);
+        if(validateNBT(nbt)) {
+            ItemStack base = bases.get(nbt.getString("base")).getItemStack().copy();
+            return base.getItem().isEnchantable(base);
+        }
+        return false;
+    }
 
     @Override
-    public int getItemEnchantability(ItemStack stack) { return this.armorMat.getEnchantability(); }
+    public int getItemEnchantability(ItemStack stack) {
+        NBTTagCompound nbt = safeReadNBT(stack);
+        if(validateNBT(nbt)) {
+            ItemStack base = bases.get(nbt.getString("base")).getItemStack().copy();
+            return base.getItem().getItemEnchantability(base);
+        }
+        return 0;
+    }
 
     @Override
     public boolean getIsRepairable(ItemStack damaged, ItemStack repair) {
-        return damaged.isItemDamaged() && repair.isItemEqual(armorMat.repairMaterial);
+        NBTTagCompound nbt = safeReadNBT(damaged);
+        if(validateNBT(nbt)) {
+            ItemStack base = bases.get(nbt.getString("base")).getItemStack().copy();
+            base.setItemDamage(damaged.getItemDamage());
+            return base.getItem().getIsRepairable(base, repair);
+        }
+        return false;
     }
 
     //Override isValidArmor?
@@ -75,10 +99,26 @@ public class Headband extends Item implements ISpecialArmor, IItemColor {
 
     @Override
     public ArmorProperties getProperties(EntityLivingBase player, @Nonnull ItemStack armor, DamageSource source, double damage, int slot) {
+        NBTTagCompound nbt = safeReadNBT(armor);
+        if(validateNBT(nbt)) {
+            ItemStack base = bases.get(nbt.getString("base")).getItemStack().copy();
+            base.setItemDamage(armor.getItemDamage());
+            if (base.getItem() instanceof ISpecialArmor) {
+                ((ISpecialArmor) base.getItem()).getProperties(player,base,source,damage,slot);
+            }
+        }
         return armorProp;
     }
 
     public void setProperties(ArmorProperties prop) { this.armorProp = prop; }
+
+    @Override
+    public int getMaxDamage(ItemStack stack) {
+        NBTTagCompound nbt = safeReadNBT(stack);
+
+        return 0;
+    }
+
 
     @Override
     public int getArmorDisplay(EntityPlayer player, @Nonnull ItemStack armor, int slot) {
@@ -93,8 +133,8 @@ public class Headband extends Item implements ISpecialArmor, IItemColor {
 
     @Override
     public int colorMultiplier(@Nonnull ItemStack stack, int tintIndex) {
-        NBTTagCompound tag = safeReadNBT(stack);
-
+        NBTTagCompound tag = NBTUtil.safeReadNBT(stack);
+        if(tag.getBoolean("dyeable"))
         switch (tintIndex) {
             case 1: return tag.getInteger("color_primary");
             case 2: return tag.getInteger("color_secondary");
@@ -103,17 +143,16 @@ public class Headband extends Item implements ISpecialArmor, IItemColor {
         return 0;
     }
 
-    private static NBTTagCompound safeReadNBT(@Nonnull ItemStack stack) {
-        NBTTagCompound tag = stack.getTagCompound();
-        if(tag == null) {
-            tag = new NBTTagCompound();
-            stack.setTagCompound(tag);
-        }
-        return tag;
-    }
-
     @SideOnly(Side.CLIENT)
     public void initItemModel() {
         ModelLoader.setCustomModelResourceLocation(this,0,new ModelResourceLocation("nekoband:models/item/band","inventory"));
+    }
+
+    public static boolean validateNBT(@Nonnull NBTTagCompound nbt) {
+        if (nbt.hasKey("base", Constants.NBT.TAG_STRING) && bases.containsKey(nbt.getString("base"))) {
+            return true;
+        }
+        NekoBand.logger.error("Tried to look up NBT for an invalid Headband itemstack!");
+        return false;
     }
 }

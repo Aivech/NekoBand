@@ -31,5 +31,5 @@ public class HeadbandBase {
     }
 
     public ResourceLocation getTexture() { return this.texture; }
-    public ItemStack getItem() { return this.item; }
+    public ItemStack getItemStack() { return this.item; }
 }

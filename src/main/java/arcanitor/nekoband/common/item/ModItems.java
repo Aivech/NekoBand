@@ -43,10 +43,22 @@ public class ModItems {
     public static void initItems(RegistryEvent.Register<Item> e) {
         e.getRegistry().registerAll(
                 itemHeadband = new ItemHeadband("headband"),
+
                 headbandEarth = new HeadbandEarth(),
                 headbandLightning = new HeadbandLightning(),
                 headbandFire = new HeadbandFire(),
-                headbandIce = new HeadbandIce()
+                headbandIce = new HeadbandIce(),
+
+                earOuterDyeable = new ItemEarOuter(
+                        "ear_primary_dyeable",
+                        new ResourceLocation(NekoBand.MODID,"item/ears/cat_ears_dyeable"),
+                        true
+                ),
+                earInnerDyeable = new ItemEarInner(
+                        "ear_secondary_dyeable",
+                        new ResourceLocation(NekoBand.MODID,"item/ears/cat_ears_dyeable"),
+                        true
+                    )
         );
 
         HeadbandBase.addBase(
