@@ -8,6 +8,7 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -16,6 +17,10 @@ public class CommonProxy {
 
     public void preInit(FMLPreInitializationEvent e) {
         NekoBand.logger.info("NekoPreInitialize!");
+    }
+
+    public void init(FMLInitializationEvent e) {
+
     }
 
     @SubscribeEvent

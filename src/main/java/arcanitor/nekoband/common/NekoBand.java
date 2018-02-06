@@ -3,6 +3,7 @@ package arcanitor.nekoband.common;
 import arcanitor.nekoband.proxy.CommonProxy;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.logging.log4j.Logger;
 
@@ -26,5 +27,10 @@ public class NekoBand {
     public void preInit(FMLPreInitializationEvent e) {
         logger = e.getModLog();
         proxy.preInit(e);
+    }
+
+    @Mod.EventHandler
+    public void init(FMLInitializationEvent e) {
+        proxy.init(e);
     }
 }

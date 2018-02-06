@@ -114,6 +114,6 @@ public class Headband extends Item implements ISpecialArmor, IItemColor {
 
     @SideOnly(Side.CLIENT)
     public void initItemModel() {
-        ModelLoader.setCustomModelResourceLocation(this,0,new ModelResourceLocation("nekoband:models/item/headband","inventory"));
+        ModelLoader.setCustomModelResourceLocation(this,0,new ModelResourceLocation("nekoband:models/item/band","inventory"));
     }
 }

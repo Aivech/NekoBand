@@ -17,7 +17,7 @@ import java.util.function.Function;
 public class ModelHeadbandDynamic implements IModel {
     public static final IModel MODEL = new ModelHeadbandDynamic();
 
-    private static final ResourceLocation bandDefault = new ResourceLocation(NekoBand.MODID,"item/headband/headband_dyeable");
+    private static final ResourceLocation bandDefault = new ResourceLocation(NekoBand.MODID,"item/band/headband_dyeable");
     private static final ResourceLocation outerEarDefault = new ResourceLocation(NekoBand.MODID,"item/ears/cat_ears_dyeable");
 
     @Override

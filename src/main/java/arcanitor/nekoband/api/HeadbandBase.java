@@ -8,7 +8,7 @@ import javax.annotation.Nonnull;
 
 public class HeadbandBase {
     /**
-     * Add an item as a valid headband base
+     * Add an item as a valid band base
      * Should be done during FMLInitializationEvent
      *
      * @param item      The ItemStack to be added as a base
