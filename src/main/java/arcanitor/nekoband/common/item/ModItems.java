@@ -1,10 +1,15 @@
 package arcanitor.nekoband.common.item;
 
+import arcanitor.nekoband.api.HeadbandBase;
+import arcanitor.nekoband.common.NekoBand;
 import arcanitor.nekoband.common.item.elemental.HeadbandEarth;
 import arcanitor.nekoband.common.item.elemental.HeadbandFire;
 import arcanitor.nekoband.common.item.elemental.HeadbandIce;
 import arcanitor.nekoband.common.item.elemental.HeadbandLightning;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -37,6 +42,23 @@ public class ModItems {
                 headbandLightning = new HeadbandLightning(),
                 headbandFire = new HeadbandFire(),
                 headbandIce = new HeadbandIce()
+        );
+
+        HeadbandBase.addBase(
+                new ItemStack(Items.LEATHER_HELMET),
+                new ResourceLocation(NekoBand.MODID,"item/band/leather")
+        );
+        HeadbandBase.addBase(
+                new ItemStack(Items.IRON_HELMET),
+                new ResourceLocation(NekoBand.MODID,"item/band/iron")
+        );
+        HeadbandBase.addBase(
+                new ItemStack(Items.GOLDEN_HELMET),
+                new ResourceLocation(NekoBand.MODID,"item/band/gold")
+        );
+        HeadbandBase.addBase(
+                new ItemStack(Items.DIAMOND_HELMET),
+                new ResourceLocation(NekoBand.MODID,"item/band/diamond")
         );
     }
 

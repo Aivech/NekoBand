@@ -3,13 +3,15 @@ package arcanitor.nekoband.api;
 import arcanitor.nekoband.common.item.Headband;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.event.RegistryEvent;
 
 import javax.annotation.Nonnull;
 
 public class HeadbandBase {
     /**
      * Add an item as a valid band base
-     * Should be done during FMLInitializationEvent
+     * Should be done immediately after registering the items
+     * @see arcanitor.nekoband.common.item.ModItems#initItems(RegistryEvent.Register)
      *
      * @param item      The ItemStack to be added as a base
      * @param texture   Headband texture
