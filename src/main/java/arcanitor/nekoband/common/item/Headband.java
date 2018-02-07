@@ -2,7 +2,7 @@ package arcanitor.nekoband.common.item;
 
 import arcanitor.nekoband.api.HeadbandBase;
 import arcanitor.nekoband.common.NekoBand;
-import arcanitor.nekoband.util.NBTUtil;
+import arcanitor.nekoband.util.NBTUtils;
 import com.google.common.collect.ImmutableSet;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.color.IItemColor;
@@ -26,7 +26,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
-import static arcanitor.nekoband.util.NBTUtil.safeReadNBT;
+import static arcanitor.nekoband.util.NBTUtils.safeReadNBT;
 
 public class Headband extends Item implements ISpecialArmor, IItemColor {
     public static HashMap<String,HeadbandBase> bases = new HashMap<>();
@@ -151,7 +151,7 @@ public class Headband extends Item implements ISpecialArmor, IItemColor {
 
     @Override
     public int colorMultiplier(@Nonnull ItemStack stack, int tintIndex) {
-        NBTTagCompound tag = NBTUtil.safeReadNBT(stack);
+        NBTTagCompound tag = NBTUtils.safeReadNBT(stack);
         if(tag.getBoolean("dyeable"))
         switch (tintIndex) {
             case 1: return tag.getInteger("color_primary");

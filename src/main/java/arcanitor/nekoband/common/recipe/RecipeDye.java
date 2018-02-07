@@ -3,6 +3,7 @@ package arcanitor.nekoband.common.recipe;
 import arcanitor.nekoband.common.NekoBand;
 import arcanitor.nekoband.common.item.Headband;
 import arcanitor.nekoband.common.item.ear.IEar;
+import arcanitor.nekoband.util.NBTUtils;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -52,15 +53,16 @@ public class RecipeDye extends IForgeRegistryEntry.Impl<IRecipe> implements IRec
                         if (((IEar) test.getItem()).isDyeable()) { //can we dye it?
                             dyeable = test;
                         } else { return false; }
-                    }
-                }
+                    } else if (!DyeUtils.isDye(test)) {
+                        return false;
+                    } else { dyes.add(test); }
 
-                //has an item that isn't dye or a dyeable item
-                if (!DyeUtils.isDye(test)) {
-                    return false;
+                } else {
+                    if (!DyeUtils.isDye(test)) {
+                        return false;
+                    }
+                    dyes.add(test);
                 }
-                //add this dye to the list
-                dyes.add(test);
             }
         }
 
@@ -73,8 +75,6 @@ public class RecipeDye extends IForgeRegistryEntry.Impl<IRecipe> implements IRec
         ItemStack dyeable = ItemStack.EMPTY;
         int[] rgb = new int[3];
         int numDyes = 0;
-        Item item = null;
-
         int magic = 0; //not sure what this does
 
         //for each slot
@@ -82,7 +82,7 @@ public class RecipeDye extends IForgeRegistryEntry.Impl<IRecipe> implements IRec
             //get the itemstack in that slot
             ItemStack slot = inv.getStackInSlot(i);
             if (!slot.isEmpty()) {
-                item = slot.getItem();
+                Item item = slot.getItem();
 
                 if (DyeUtils.isDye(slot)) { //the slot has a dye
                     int color = DyeUtils.colorFromStack(slot).get().getColorValue();
@@ -144,14 +144,12 @@ public class RecipeDye extends IForgeRegistryEntry.Impl<IRecipe> implements IRec
         int newColor = (red << 8) + green;
         newColor = (newColor << 8) + blue;
 
-        NBTTagCompound nbt = dyeable.getTagCompound();
-        if (nbt == null) {
-            nbt = new NBTTagCompound();
-            dyeable.setTagCompound(nbt);
-        }
-        if (item instanceof IEar) {
+        NBTTagCompound nbt = NBTUtils.safeReadNBT(dyeable);
+
+        Item dyeableItem = dyeable.getItem();
+        if (dyeableItem instanceof IEar) {
             nbt.setInteger("color",newColor);
-        } else if (item instanceof Headband) {
+        } else if (dyeableItem instanceof Headband) {
             nbt.setInteger("color_headband",newColor);
         }
 

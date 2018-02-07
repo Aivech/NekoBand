@@ -5,7 +5,7 @@ import net.minecraft.nbt.NBTTagCompound;
 
 import javax.annotation.Nonnull;
 
-public class NBTUtil {
+public class NBTUtils {
     public static NBTTagCompound safeReadNBT(@Nonnull ItemStack stack) {
         NBTTagCompound tag = stack.getTagCompound();
         if(tag == null) {
