@@ -1,5 +1,6 @@
 package arcanitor.nekoband.common.recipe;
 
+import arcanitor.nekoband.common.NekoBand;
 import arcanitor.nekoband.common.item.Headband;
 import arcanitor.nekoband.common.item.ear.IEar;
 import net.minecraft.inventory.InventoryCrafting;
@@ -7,6 +8,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.DyeUtils;
 import net.minecraftforge.registries.IForgeRegistryEntry;
@@ -16,9 +18,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RecipeDye extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe{
+    public RecipeDye() {
+        super();
+        setRegistryName(new ResourceLocation(NekoBand.MODID,"recipe_dye"));
+        NekoBand.logger.info("Created dyeing recipe!");
+    }
 
     @Override
     public boolean matches(InventoryCrafting inv, World worldIn) {
+        NekoBand.logger.info("Checking if is valid dye recipe");
         ItemStack dyeable = ItemStack.EMPTY;
         List<ItemStack> dyes = new ArrayList<>();
         for(int i = 0; i < inv.getSizeInventory(); i++) {

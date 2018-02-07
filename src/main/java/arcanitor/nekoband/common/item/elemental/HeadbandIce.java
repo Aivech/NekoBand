@@ -11,7 +11,8 @@ import javax.annotation.Nonnull;
 public class HeadbandIce extends Headband implements IElementalArmor {
 
     public HeadbandIce() {
-        super("headband_ice",0,ELEMENTAL);
+        super("headband_ice",0);
+        //super("headband_ice",0,ELEMENTAL);
     }
 
     @Override

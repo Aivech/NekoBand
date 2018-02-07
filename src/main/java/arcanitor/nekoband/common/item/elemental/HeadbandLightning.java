@@ -10,7 +10,8 @@ import javax.annotation.Nonnull;
 
 public class HeadbandLightning extends Headband implements IElementalArmor {
     public HeadbandLightning() {
-        super("headband_lightning",0,ELEMENTAL);
+        super("headband_lightningw",0);
+        //super("headband_lightning",0,ELEMENTAL);
     }
 
     public ArmorProperties getProperties(EntityLivingBase player, @Nonnull ItemStack armor, DamageSource source, double damage, int slot) {

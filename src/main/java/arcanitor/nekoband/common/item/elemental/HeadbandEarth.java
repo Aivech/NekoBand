@@ -11,7 +11,8 @@ import javax.annotation.Nonnull;
 public class HeadbandEarth extends Headband implements IElementalArmor {
 
     public HeadbandEarth() {
-        super("headband_earth",0,ELEMENTAL);
+        super("headband_earth",0);
+        //super("headband_earth",0,ELEMENTAL);
     }
 
     @Override

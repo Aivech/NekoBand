@@ -44,10 +44,10 @@ public class ModItems {
         e.getRegistry().registerAll(
                 itemHeadband = new ItemHeadband("headband"),
 
-                headbandEarth = new HeadbandEarth(),
-                headbandLightning = new HeadbandLightning(),
-                headbandFire = new HeadbandFire(),
-                headbandIce = new HeadbandIce(),
+                //headbandEarth = new HeadbandEarth(),
+                //headbandLightning = new HeadbandLightning(),
+                //headbandFire = new HeadbandFire(),
+                //headbandIce = new HeadbandIce(),
 
                 earOuterDyeable = new ItemEarOuter(
                         "ear_primary_dyeable",
@@ -83,7 +83,7 @@ public class ModItems {
     public static void initItemModels() {
         itemHeadband.initItemModel();
 
-        headbandLightning.initItemModel();
+        //headbandLightning.initItemModel();
     }
 
 

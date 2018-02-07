@@ -10,7 +10,8 @@ import javax.annotation.Nonnull;
 
 public class HeadbandFire extends Headband implements IElementalArmor {
     public HeadbandFire() {
-        super("headband_fire",0,ELEMENTAL);
+        super("headband_fire",0);
+        //super("headband_fire",0,ELEMENTAL);
     }
 
     @Override
