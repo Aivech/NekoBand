@@ -6,11 +6,11 @@ import arcanitor.nekoband.util.NBTUtil;
 import com.google.common.collect.ImmutableSet;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.color.IItemColor;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
@@ -32,8 +32,8 @@ public class Headband extends Item implements ISpecialArmor, IItemColor {
     public static HashMap<String,HeadbandBase> bases = new HashMap<>();
     private static Set<ResourceLocation> ears = new HashSet<>();
 
-    private ArmorMaterial armorMat;
-    protected ArmorProperties armorProp = new ArmorProperties(0,0,Integer.MAX_VALUE);
+    //private ArmorMaterial armorMat;
+    protected static final ArmorProperties armorProp = new ArmorProperties(0,0,Integer.MAX_VALUE);
 
     public Headband(String name, int durability/*, ArmorMaterial armorMat*/) {
         setRegistryName(new ResourceLocation(NekoBand.MODID,name));
@@ -85,6 +85,7 @@ public class Headband extends Item implements ISpecialArmor, IItemColor {
         if(validateNBT(nbt)) {
             ItemStack base = bases.get(nbt.getString("base")).getItemStack().copy();
             base.setItemDamage(damaged.getItemDamage());
+            EnchantmentHelper.setEnchantments(EnchantmentHelper.getEnchantments(damaged),base);
             return base.getItem().getIsRepairable(base, repair);
         }
         return false;
@@ -102,33 +103,50 @@ public class Headband extends Item implements ISpecialArmor, IItemColor {
         NBTTagCompound nbt = safeReadNBT(armor);
         if(validateNBT(nbt)) {
             ItemStack base = bases.get(nbt.getString("base")).getItemStack().copy();
-            base.setItemDamage(armor.getItemDamage());
             if (base.getItem() instanceof ISpecialArmor) {
-                ((ISpecialArmor) base.getItem()).getProperties(player,base,source,damage,slot);
+                base.setItemDamage(armor.getItemDamage());
+                EnchantmentHelper.setEnchantments(EnchantmentHelper.getEnchantments(armor),base);
+                return ((ISpecialArmor) base.getItem()).getProperties(player,base,source,damage,slot);
             }
         }
         return armorProp;
     }
 
-    public void setProperties(ArmorProperties prop) { this.armorProp = prop; }
-
     @Override
     public int getMaxDamage(ItemStack stack) {
         NBTTagCompound nbt = safeReadNBT(stack);
-
+        if (validateNBT(nbt)) {
+            ItemStack base = bases.get(nbt.getString("base")).getItemStack().copy();
+            return base.getItem().getMaxDamage(base);
+        }
         return 0;
     }
 
 
     @Override
     public int getArmorDisplay(EntityPlayer player, @Nonnull ItemStack armor, int slot) {
-        return this.armorMat.getDamageReductionAmount(EntityEquipmentSlot.HEAD);
+        NBTTagCompound nbt = safeReadNBT(armor);
+        if (validateNBT(nbt)) {
+            ItemStack base = bases.get(nbt.getString("base")).getItemStack().copy();
+            if (base.getItem() instanceof ISpecialArmor) {
+                base.setItemDamage(armor.getItemDamage());
+                EnchantmentHelper.setEnchantments(EnchantmentHelper.getEnchantments(armor),base);
+
+                return ((ISpecialArmor) base.getItem()).getArmorDisplay(player,base,slot);
+            }
+        }
+        return 0;
     }
 
     @Override
     public void damageArmor(EntityLivingBase entity, @Nonnull ItemStack stack, DamageSource source, int damage, int slot) {
-        if (stack.getMaxDamage() == 0) return;
-        stack.damageItem(Math.max(Math.floorDiv(damage,4),1),entity);
+        NBTTagCompound nbt = safeReadNBT(stack);
+        if (validateNBT(nbt)) {
+            ItemStack base = bases.get(nbt.getString("base")).getItemStack().copy();
+            if (stack.getMaxDamage() == 0 || !base.isItemStackDamageable()) return;
+
+            stack.damageItem(Math.max(Math.floorDiv(damage,4),1),entity);
+        }
     }
 
     @Override
