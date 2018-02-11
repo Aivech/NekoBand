@@ -15,7 +15,7 @@ public class HeadbandLightning extends Headband implements IElementalArmor {
     }
 
     public ArmorProperties getProperties(EntityLivingBase player, @Nonnull ItemStack armor, DamageSource source, double damage, int slot) {
-        ArmorProperties prop = armorProp;
+        ArmorProperties prop = ARMOR_PROP;
 
         if (source == DamageSource.LIGHTNING_BOLT || source == DamageSource.ANVIL) {
             prop.AbsorbRatio = 1;

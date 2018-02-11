@@ -17,7 +17,7 @@ public class HeadbandIce extends Headband implements IElementalArmor {
 
     @Override
     public ArmorProperties getProperties(EntityLivingBase player, @Nonnull ItemStack armor, DamageSource source, double damage, int slot) {
-        ArmorProperties prop = armorProp;
+        ArmorProperties prop = ARMOR_PROP;
         if (source == DamageSource.DROWN) {
             prop.AbsorbRatio = 1;
         } else if (!source.isFireDamage()||(source == PIERCING_FIRE)) {

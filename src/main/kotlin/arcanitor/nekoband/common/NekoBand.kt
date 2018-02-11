@@ -7,10 +7,19 @@ import net.minecraftforge.fml.common.SidedProxy
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
 import org.apache.logging.log4j.Logger
 
-@SidedProxy(clientSide = "arcanitor.nekoband.proxy.ClientProxy", serverSide = "arcanitor.nekoband.proxy.ServerProxy")
+@SidedProxy(
+        clientSide = "arcanitor.nekoband.proxy.ClientProxy",
+        serverSide = "arcanitor.nekoband.proxy.ServerProxy"
+)
 var proxy: CommonProxy? = null
 
-@Mod(modid = NekoBand.MODID, name = NekoBand.NAME, version = NekoBand.VERSION, useMetadata = true)
+@Mod(
+        modid = NekoBand.MODID,
+        name = NekoBand.NAME,
+        version = NekoBand.VERSION,
+        useMetadata = true,
+        modLanguageAdapter = "net.shadowfacts.forgelin.KotlinAdapter"
+)
 object NekoBand {
     const val MODID = "nekoband"
     const val NAME = "NekoBand"

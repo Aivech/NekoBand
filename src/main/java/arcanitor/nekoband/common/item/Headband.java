@@ -37,7 +37,7 @@ public class Headband extends ItemArmor implements ISpecialArmor, IItemColor {
     private static final ArmorMaterial ARMOR_MAT =
             EnumHelper.addArmorMaterial("headband_default","",0,
                     new int[]{0,0,0,0},0, SoundEvents.ENTITY_CAT_PURREOW,0);
-    private static final ArmorProperties ARMOR_PROP = new ArmorProperties(0,0,Integer.MAX_VALUE);
+    public static final ArmorProperties ARMOR_PROP = new ArmorProperties(0,0,Integer.MAX_VALUE);
 
     public Headband(String name, int durability/*, ArmorMaterial armorMat*/) {
         super(ARMOR_MAT,0,EntityEquipmentSlot.HEAD);

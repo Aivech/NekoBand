@@ -17,7 +17,7 @@ public class HeadbandEarth extends Headband implements IElementalArmor {
 
     @Override
     public ArmorProperties getProperties(EntityLivingBase player, @Nonnull ItemStack armor, DamageSource source, double damage, int slot) {
-        ArmorProperties prop = armorProp;
+        ArmorProperties prop = ARMOR_PROP;
 
         if (source == DamageSource.IN_WALL || source == DamageSource.LIGHTNING_BOLT) {
             prop.AbsorbRatio = 1;
