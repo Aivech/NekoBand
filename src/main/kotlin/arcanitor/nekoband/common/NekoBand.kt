@@ -17,8 +17,8 @@ var proxy: CommonProxy? = null
         modid = NekoBand.MODID,
         name = NekoBand.NAME,
         version = NekoBand.VERSION,
-        useMetadata = true,
-        modLanguageAdapter = "net.shadowfacts.forgelin.KotlinAdapter"
+        useMetadata = true
+        //modLanguageAdapter = "net.shadowfacts.forgelin.KotlinAdapter"
 )
 object NekoBand {
     const val MODID = "nekoband"
