@@ -57,8 +57,9 @@ dependencies {
 }
 
 sourceSets {
-    main.java.srcDirs += 'src/main/kotlin'
-    main.java.srcDirs += 'src/main/java'
+    main.java.srcDirs = []
+    main.kotlin.srcDirs += 'src/main/kotlin'
+    main.kotlin.srcDirs += 'src/main/java'
 }
 
 processResources {
