@@ -9,8 +9,9 @@ import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.Item;
+import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
@@ -18,6 +19,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.ISpecialArmor;
 import net.minecraftforge.common.util.Constants;
+import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -28,14 +30,17 @@ import java.util.Set;
 
 import static arcanitor.nekoband.util.NBTUtils.safeReadNBT;
 
-public class Headband extends Item implements ISpecialArmor, IItemColor {
+public class Headband extends ItemArmor implements ISpecialArmor, IItemColor {
     public static HashMap<String,HeadbandBase> bases = new HashMap<>();
     private static Set<ResourceLocation> ears = new HashSet<>();
 
-    //private ArmorMaterial armorMat;
-    protected static final ArmorProperties armorProp = new ArmorProperties(0,0,Integer.MAX_VALUE);
+    private static final ArmorMaterial ARMOR_MAT =
+            EnumHelper.addArmorMaterial("headband_default","",0,
+                    new int[]{0,0,0,0},0, SoundEvents.ENTITY_CAT_PURREOW,0);
+    private static final ArmorProperties ARMOR_PROP = new ArmorProperties(0,0,Integer.MAX_VALUE);
 
     public Headband(String name, int durability/*, ArmorMaterial armorMat*/) {
+        super(ARMOR_MAT,0,EntityEquipmentSlot.HEAD);
         setRegistryName(new ResourceLocation(NekoBand.MODID,name));
         setUnlocalizedName(NekoBand.MODID+":"+name);
         setMaxStackSize(1);
@@ -51,14 +56,13 @@ public class Headband extends Item implements ISpecialArmor, IItemColor {
         bases.put(base.getItemStack().getUnlocalizedName(),base);
     }
 
-    public static void addEarTexture(ResourceLocation tex) {
-        ears.add(tex);
-    }
+    public static void addEarTexture(ResourceLocation tex) { ears.add(tex); }
 
     public static ImmutableSet<ResourceLocation> getEarTextures() {
         return ImmutableSet.copyOf(ears);
     }
 
+    //Item overrides
     @Override
     public boolean isEnchantable(ItemStack stack) {
         NBTTagCompound nbt = safeReadNBT(stack);
@@ -91,13 +95,12 @@ public class Headband extends Item implements ISpecialArmor, IItemColor {
         return false;
     }
 
-    //Override isValidArmor?
-    @Override
-    public EntityEquipmentSlot getEquipmentSlot(ItemStack stack) { return EntityEquipmentSlot.HEAD; }
-
     @Override
     public int getItemStackLimit(ItemStack item) { return 1; }
 
+
+
+    //ISpecialArmor overrides
     @Override
     public ArmorProperties getProperties(EntityLivingBase player, @Nonnull ItemStack armor, DamageSource source, double damage, int slot) {
         NBTTagCompound nbt = safeReadNBT(armor);
@@ -109,7 +112,7 @@ public class Headband extends Item implements ISpecialArmor, IItemColor {
                 return ((ISpecialArmor) base.getItem()).getProperties(player,base,source,damage,slot);
             }
         }
-        return armorProp;
+        return ARMOR_PROP;
     }
 
     @Override

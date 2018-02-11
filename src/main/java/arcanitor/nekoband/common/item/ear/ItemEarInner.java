@@ -1,5 +1,6 @@
 package arcanitor.nekoband.common.item.ear;
 
+import arcanitor.nekoband.common.item.Headband;
 import arcanitor.nekoband.common.item.ItemNekoband;
 import net.minecraft.util.ResourceLocation;
 
@@ -10,6 +11,7 @@ public class ItemEarInner extends ItemNekoband implements IEar {
     public ItemEarInner(String name, ResourceLocation texture, boolean dyeable) {
         super(name);
         this.texture = texture;
+        Headband.addEarTexture(texture);
         this.dyeable = dyeable;
     }
 
