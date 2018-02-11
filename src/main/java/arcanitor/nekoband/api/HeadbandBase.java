@@ -1,6 +1,5 @@
 package arcanitor.nekoband.api;
 
-import arcanitor.nekoband.common.NekoBand;
 import arcanitor.nekoband.common.item.Headband;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
@@ -9,6 +8,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 
 import javax.annotation.ParametersAreNonnullByDefault;
+
+import static arcanitor.nekoband.common.NekoBandKt.logger;
 
 @ParametersAreNonnullByDefault
 public class HeadbandBase {
@@ -29,7 +30,7 @@ public class HeadbandBase {
             Headband.addValidBase(new HeadbandBase(helmet,texture));
             return true;
         }
-        NekoBand.log.error("Itemstack: "+helmet.toString()+" is not an ItemArmor helmet");
+        logger.error("Itemstack: "+helmet.toString()+" is not an ItemArmor helmet");
         return false;
     }
 

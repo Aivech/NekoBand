@@ -9,26 +9,23 @@ import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 
 @Mod.EventBusSubscriber
-class CommonProxy {
+open class CommonProxy {
 
+    @SubscribeEvent
+    fun modifyAttacks(e : AttackEntityEvent) {
+        val t = e.target
+        if (t is EntityLivingBase) {
+            val head = e.entityPlayer.getItemStackFromSlot(EntityEquipmentSlot.HEAD).item
+            //todo: other armor pieces maybe
 
-    companion object {
-        @SubscribeEvent
-        @JvmStatic fun modifyAttacks(e : AttackEntityEvent) {
-            val t = e.target
-            if (t is EntityLivingBase) {
-                val head = e.entityPlayer.getItemStackFromSlot(EntityEquipmentSlot.HEAD).item
-                //todo: other armor pieces maybe
+            if (head is IElementalArmor) {
+                logger.info("Valid armor found.")
 
-                if (head is IElementalArmor) {
-                    logger.info("Valid armor found.")
+                t.hurtResistantTime = 0
 
-                    t.hurtResistantTime = 0
-
-                    head.doElementalAttack(t, e.entityPlayer)
-                }
-
+                head.doElementalAttack(t, e.entityPlayer)
             }
+
         }
     }
 }

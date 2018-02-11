@@ -1,6 +1,8 @@
 package arcanitor.nekoband.common
 
+import arcanitor.nekoband.common.recipe.NekoRecipes
 import arcanitor.nekoband.proxy.CommonProxy
+import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.Mod.EventHandler
 import net.minecraftforge.fml.common.SidedProxy
@@ -25,10 +27,12 @@ lateinit var logger: Logger
         version = VERSION,
         useMetadata = true
 )
-
 class NekoBand {
     @EventHandler fun preInit(e: FMLPreInitializationEvent) {
         logger = e.modLog
-        proxy!!.preInit(e)
+        MinecraftForge.EVENT_BUS.register(proxy)
+        MinecraftForge.EVENT_BUS.register(NekoRecipes)
+
+
     }
 }

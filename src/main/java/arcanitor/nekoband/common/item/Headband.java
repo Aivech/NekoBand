@@ -29,6 +29,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static arcanitor.nekoband.common.NekoBandKt.MODID;
+import static arcanitor.nekoband.common.NekoBandKt.logger;
 import static arcanitor.nekoband.util.NBTUtils.safeReadNBT;
 
 public class Headband extends ItemArmor implements ISpecialArmor, IItemColor {
@@ -53,7 +54,7 @@ public class Headband extends ItemArmor implements ISpecialArmor, IItemColor {
     }
 
     public static void addValidBase(HeadbandBase base) {
-        NekoBand.log.info("Added "+base.getItemStack().getUnlocalizedName()+" as valid base.");
+        logger.info("Added "+base.getItemStack().getUnlocalizedName()+" as valid base.");
         bases.put(base.getItemStack().getUnlocalizedName(),base);
     }
 
@@ -174,7 +175,7 @@ public class Headband extends ItemArmor implements ISpecialArmor, IItemColor {
         if (nbt.hasKey("base", Constants.NBT.TAG_STRING) && bases.containsKey(nbt.getString("base"))) {
             return true;
         }
-        NekoBand.log.error("Tried to look up NBT for an invalid Headband itemstack!");
+        logger.error("Tried to look up NBT for an invalid Headband itemstack!");
         return false;
     }
 }
