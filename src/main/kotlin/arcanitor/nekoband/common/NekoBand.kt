@@ -7,26 +7,26 @@ import net.minecraftforge.fml.common.SidedProxy
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
 import org.apache.logging.log4j.Logger
 
+const val MODID = "nekoband"
+const val NAME = "NekoBand"
+const val VERSION = "0.0.1"
+
 @SidedProxy(
         clientSide = "arcanitor.nekoband.proxy.ClientProxy",
         serverSide = "arcanitor.nekoband.proxy.ServerProxy"
 )
 var proxy: CommonProxy? = null
 
+lateinit var logger: Logger
+
 @Mod(
-        modid = NekoBand.MODID,
-        name = NekoBand.NAME,
-        version = NekoBand.VERSION,
+        modid = MODID,
+        name = NAME,
+        version = VERSION,
         useMetadata = true
-        //modLanguageAdapter = "net.shadowfacts.forgelin.KotlinAdapter"
 )
-object NekoBand {
-    const val MODID = "nekoband"
-    const val NAME = "NekoBand"
-    const val VERSION = "0.0.1"
 
-    lateinit var logger : Logger
-
+class NekoBand {
     @EventHandler fun preInit(e: FMLPreInitializationEvent) {
         logger = e.modLog
         proxy!!.preInit(e)

@@ -14,11 +14,13 @@ import net.minecraftforge.common.model.IModelState;
 import java.util.Collection;
 import java.util.function.Function;
 
+import static arcanitor.nekoband.common.NekoBandKt.MODID;
+
 public class ModelHeadbandDynamic implements IModel {
     public static final IModel MODEL = new ModelHeadbandDynamic();
 
-    private static final ResourceLocation bandDefault = new ResourceLocation(NekoBand.MODID,"item/band/headband_dyeable");
-    private static final ResourceLocation outerEarDefault = new ResourceLocation(NekoBand.MODID,"item/ears/cat_ears_dyeable");
+    private static final ResourceLocation bandDefault = new ResourceLocation(MODID,"item/band/headband_dyeable");
+    private static final ResourceLocation outerEarDefault = new ResourceLocation(MODID,"item/ears/cat_ears_dyeable");
 
     @Override
     public IBakedModel bake(IModelState state, VertexFormat format, Function<ResourceLocation, TextureAtlasSprite> bakedTextureGetter) {
@@ -33,7 +35,7 @@ public class ModelHeadbandDynamic implements IModel {
         for (HeadbandBase base : Headband.bases.values()) builder.add(base.getTexture());
 
         //dyeable base
-        builder.add(new ResourceLocation(NekoBand.MODID,"item/band/dyeable"));
+        builder.add(new ResourceLocation(MODID,"item/band/dyeable"));
 
         //ear textures - more magic
         builder.addAll(Headband.getEarTextures());

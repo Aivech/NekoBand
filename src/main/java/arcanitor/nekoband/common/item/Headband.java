@@ -28,6 +28,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
+import static arcanitor.nekoband.common.NekoBandKt.MODID;
 import static arcanitor.nekoband.util.NBTUtils.safeReadNBT;
 
 public class Headband extends ItemArmor implements ISpecialArmor, IItemColor {
@@ -41,8 +42,8 @@ public class Headband extends ItemArmor implements ISpecialArmor, IItemColor {
 
     public Headband(String name, int durability/*, ArmorMaterial armorMat*/) {
         super(ARMOR_MAT,0,EntityEquipmentSlot.HEAD);
-        setRegistryName(new ResourceLocation(NekoBand.MODID,name));
-        setUnlocalizedName(NekoBand.MODID+":"+name);
+        setRegistryName(new ResourceLocation(MODID,name));
+        setUnlocalizedName(MODID+":"+name);
         setMaxStackSize(1);
         setMaxDamage(durability);
         //this.armorMat = armorMat;
@@ -52,7 +53,7 @@ public class Headband extends ItemArmor implements ISpecialArmor, IItemColor {
     }
 
     public static void addValidBase(HeadbandBase base) {
-        NekoBand.logger.info("Added "+base.getItemStack().getUnlocalizedName()+" as valid base.");
+        NekoBand.log.info("Added "+base.getItemStack().getUnlocalizedName()+" as valid base.");
         bases.put(base.getItemStack().getUnlocalizedName(),base);
     }
 
@@ -173,7 +174,7 @@ public class Headband extends ItemArmor implements ISpecialArmor, IItemColor {
         if (nbt.hasKey("base", Constants.NBT.TAG_STRING) && bases.containsKey(nbt.getString("base"))) {
             return true;
         }
-        NekoBand.logger.error("Tried to look up NBT for an invalid Headband itemstack!");
+        NekoBand.log.error("Tried to look up NBT for an invalid Headband itemstack!");
         return false;
     }
 }

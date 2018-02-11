@@ -29,7 +29,7 @@ public class HeadbandBase {
             Headband.addValidBase(new HeadbandBase(helmet,texture));
             return true;
         }
-        NekoBand.logger.error("Itemstack: "+helmet.toString()+" is not an ItemArmor helmet");
+        NekoBand.log.error("Itemstack: "+helmet.toString()+" is not an ItemArmor helmet");
         return false;
     }
 

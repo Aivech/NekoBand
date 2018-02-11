@@ -18,6 +18,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import static arcanitor.nekoband.common.NekoBandKt.MODID;
+
 @Mod.EventBusSubscriber
 public class ModItems {
 
@@ -51,31 +53,31 @@ public class ModItems {
 
                 earOuterDyeable = new ItemEarOuter(
                         "ear_primary_dyeable",
-                        new ResourceLocation(NekoBand.MODID,"item/ears/cat_ears_dyeable"),
+                        new ResourceLocation(MODID,"item/ears/cat_ears_dyeable"),
                         true
                 ),
                 earInnerDyeable = new ItemEarInner(
                         "ear_secondary_dyeable",
-                        new ResourceLocation(NekoBand.MODID,"item/ears/cat_ears_dyeable"),
+                        new ResourceLocation(MODID,"item/ears/cat_ears_dyeable"),
                         true
                     )
         );
 
         HeadbandBase.addBase(
                 new ItemStack(Items.LEATHER_HELMET),
-                new ResourceLocation(NekoBand.MODID,"item/band/leather")
+                new ResourceLocation(MODID,"item/band/leather")
         );
         HeadbandBase.addBase(
                 new ItemStack(Items.IRON_HELMET),
-                new ResourceLocation(NekoBand.MODID,"item/band/iron")
+                new ResourceLocation(MODID,"item/band/iron")
         );
         HeadbandBase.addBase(
                 new ItemStack(Items.GOLDEN_HELMET),
-                new ResourceLocation(NekoBand.MODID,"item/band/gold")
+                new ResourceLocation(MODID,"item/band/gold")
         );
         HeadbandBase.addBase(
                 new ItemStack(Items.DIAMOND_HELMET),
-                new ResourceLocation(NekoBand.MODID,"item/band/diamond")
+                new ResourceLocation(MODID,"item/band/diamond")
         );
     }
 

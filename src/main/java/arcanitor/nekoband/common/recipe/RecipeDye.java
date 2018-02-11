@@ -18,16 +18,18 @@ import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
 
+import static arcanitor.nekoband.common.NekoBandKt.MODID;
+
 public class RecipeDye extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe{
     public RecipeDye() {
         super();
-        setRegistryName(new ResourceLocation(NekoBand.MODID,"recipe_dye"));
-        NekoBand.logger.info("Created dyeing recipe!");
+        setRegistryName(new ResourceLocation(MODID,"recipe_dye"));
+        NekoBand.log.info("Created dyeing recipe!");
     }
 
     @Override
     public boolean matches(InventoryCrafting inv, World worldIn) {
-        NekoBand.logger.info("Checking if is valid dye recipe");
+        NekoBand.log.info("Checking if is valid dye recipe");
         ItemStack dyeable = ItemStack.EMPTY;
         List<ItemStack> dyes = new ArrayList<>();
         for(int i = 0; i < inv.getSizeInventory(); i++) {

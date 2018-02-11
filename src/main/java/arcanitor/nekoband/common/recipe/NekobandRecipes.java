@@ -10,7 +10,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class NekobandRecipes {
     @SubscribeEvent
     public static void initCraftingRecipes(RegistryEvent.Register<IRecipe> e) {
-        NekoBand.logger.info("Registering custom crafting recipes!");
+        NekoBand.log.info("Registering custom crafting recipes!");
         e.getRegistry().registerAll(
                 new RecipeDye()
         );

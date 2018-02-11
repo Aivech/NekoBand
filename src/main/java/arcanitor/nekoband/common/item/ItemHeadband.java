@@ -21,6 +21,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
 
+import static arcanitor.nekoband.common.NekoBandKt.MODID;
+
 //OLD CLASS
 @Deprecated
 public class ItemHeadband extends ItemArmor implements ISpecialArmor {
@@ -30,8 +32,8 @@ public class ItemHeadband extends ItemArmor implements ISpecialArmor {
     public ItemHeadband(String name, ArmorMaterial mat) {
         super(mat,0,EntityEquipmentSlot.HEAD);
         this.name = name;
-        setRegistryName(new ResourceLocation(NekoBand.MODID,name));
-        setUnlocalizedName(NekoBand.MODID+":"+name);
+        setRegistryName(new ResourceLocation(MODID,name));
+        setUnlocalizedName(MODID+":"+name);
 
         //this MUST be done last
         ModItems.NEKOTAB.addToTab(new ItemStack(this));
@@ -65,7 +67,7 @@ public class ItemHeadband extends ItemArmor implements ISpecialArmor {
 
     @Override
     public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-        return NekoBand.MODID+":textures/model/"+this.name+".png";
+        return MODID+":textures/model/"+this.name+".png";
     }
 
     @SideOnly(Side.CLIENT)
