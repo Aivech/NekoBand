@@ -1,7 +1,6 @@
 package arcanitor.nekoband.client.model;
 
 import arcanitor.nekoband.api.HeadbandBase;
-import arcanitor.nekoband.common.NekoBand;
 import arcanitor.nekoband.common.item.Headband;
 import com.google.common.collect.ImmutableSet;
 import net.minecraft.client.renderer.block.model.IBakedModel;

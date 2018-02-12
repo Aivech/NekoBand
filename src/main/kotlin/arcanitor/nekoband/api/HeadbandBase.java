@@ -1,6 +1,7 @@
 package arcanitor.nekoband.api;
 
 import arcanitor.nekoband.common.item.Headband;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
@@ -26,7 +27,7 @@ public class HeadbandBase {
      * @return  true if the operation was successful
      */
     public static boolean addBase(ItemStack helmet, ResourceLocation texture) {
-        if (helmet.getItem() instanceof ItemArmor && helmet.getItem().getEquipmentSlot(helmet) == EntityEquipmentSlot.HEAD) {
+        if (helmet.getItem() instanceof ItemArmor && EntityLiving.getSlotForItemStack(helmet) == EntityEquipmentSlot.HEAD) {
             Headband.addValidBase(new HeadbandBase(helmet,texture));
             return true;
         }

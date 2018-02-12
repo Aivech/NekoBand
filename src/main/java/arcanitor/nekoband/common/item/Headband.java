@@ -1,7 +1,6 @@
 package arcanitor.nekoband.common.item;
 
 import arcanitor.nekoband.api.HeadbandBase;
-import arcanitor.nekoband.common.NekoBand;
 import arcanitor.nekoband.util.NBTUtils;
 import com.google.common.collect.ImmutableSet;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;

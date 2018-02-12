@@ -15,7 +15,7 @@ public class TabNekoband extends CreativeTabs {
 
     @Override
     public ItemStack getTabIconItem() {
-        return new ItemStack(ModItems.itemHeadband);
+        return new ItemStack(ModItems.itemHeadbandBiped);
     }
 
     @Override

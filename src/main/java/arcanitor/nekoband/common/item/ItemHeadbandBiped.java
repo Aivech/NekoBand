@@ -1,7 +1,6 @@
 package arcanitor.nekoband.common.item;
 
 import arcanitor.nekoband.client.model.ModelHeadband;
-import arcanitor.nekoband.common.NekoBand;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.Entity;
@@ -25,11 +24,11 @@ import static arcanitor.nekoband.common.NekoBandKt.MODID;
 
 //OLD CLASS
 @Deprecated
-public class ItemHeadband extends ItemArmor implements ISpecialArmor {
+public class ItemHeadbandBiped extends ItemArmor implements ISpecialArmor {
     private boolean isUnbreakable = false;
     private final String name;
 
-    public ItemHeadband(String name, ArmorMaterial mat) {
+    public ItemHeadbandBiped(String name, ArmorMaterial mat) {
         super(mat,0,EntityEquipmentSlot.HEAD);
         this.name = name;
         setRegistryName(new ResourceLocation(MODID,name));
@@ -39,7 +38,7 @@ public class ItemHeadband extends ItemArmor implements ISpecialArmor {
         ModItems.NEKOTAB.addToTab(new ItemStack(this));
     }
 
-    public ItemHeadband(String name) {
+    public ItemHeadbandBiped(String name) {
         this(name, MATERIAL_HEADBAND);
     }
 
